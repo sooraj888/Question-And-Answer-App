@@ -1,0 +1,27 @@
+[
+  { "id": 1, "question": "addition of 1 and 2", "answer": 3 },
+  {
+    "id": 2,
+    "question": "addition of 2 and 2",
+    "answer": 4,
+    "option": ["5", "2", "8", "4"]
+  },
+  {
+    "id": 3,
+    "question": "value of pie ",
+    "answer": ["22/7", "3.142"],
+    "option": ["22/7", "7", "3.142", "4.1"]
+  },
+  {
+    "id": 4,
+    "question": "3 is greater than 2",
+    "answer": "yes",
+    "option": ["yes", "no"]
+  },
+  {
+    "id": 5,
+    "question": "",
+    "answer": "",
+    "option": ""
+  }
+]

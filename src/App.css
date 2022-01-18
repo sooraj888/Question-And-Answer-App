@@ -1,6 +1,12 @@
-.App {
+.headding {
   text-align: center;
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+.qusion {
+  padding-top: 50px;
+}
+.s {
+  padding-top: 20px;
 }
