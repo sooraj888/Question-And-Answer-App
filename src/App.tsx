@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Link, Routes, Route, Router } from "react-router-dom";
+import InputDetailsForm from "./pages/InputDetailsForm";
+import Qusion from "./pages/Qusion";
+import Result from "./pages/Result";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Link to="/">Qustion and Answer App</Link>
+      <Routes>
+        <Route path="/" element={<InputDetailsForm></InputDetailsForm>}></Route>
+        <Route path="questions/:id" element={<Qusion></Qusion>}></Route>
+        <Route path="result" element={<Result></Result>}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
+      </Routes>
     </div>
   );
 }
