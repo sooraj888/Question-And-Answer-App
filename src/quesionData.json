@@ -1,9 +1,9 @@
 [
-  { "id": 1, "question": "addition of 1 and 2", "answer": 3 },
+  { "id": 1, "question": "addition of 1 and 2", "answer": "3" },
   {
     "id": 2,
     "question": "addition of 2 and 2",
-    "answer": 4,
+    "answer": "4",
     "option": ["5", "2", "8", "4"]
   },
   {
@@ -20,8 +20,8 @@
   },
   {
     "id": 5,
-    "question": "",
-    "answer": "",
+    "question": "question 5",
+    "answer": "a",
     "option": ""
   }
 ]

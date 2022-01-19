@@ -25,6 +25,7 @@ const Qusetion = () => {
 
   const handleOnAnswerSubmission = (e: any) => {
     e.preventDefault();
+    navigate("/result", { state: answersArray });
   };
 
   useEffect(() => {
@@ -58,7 +59,12 @@ const Qusetion = () => {
       <Box
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <div className="qusion">{quesionData?.[id - 1].question}</div>
+        <div className="qusion">
+          <h3 style={{ display: "inline-block", paddingRight: "40px" }}>
+            {id} )
+          </h3>
+          <b>{quesionData?.[id - 1].question}</b>
+        </div>
       </Box>
       <Button
         sx={{ left: "50px", bottom: "30%", position: "absolute" }}
@@ -129,7 +135,32 @@ const Qusetion = () => {
                 </FormGroup>
               );
             case "4":
-              return <></>;
+              let arr4: any = quesionData?.[3].option;
+              return (
+                <FormControl>
+                  <RadioGroup
+                    value={answersArray[3]}
+                    onChange={(e: any) => {
+                      setAnswersArray((value: any) => {
+                        const arrUpdate: any = [...value];
+                        arrUpdate[3] = [e.target.value];
+                        return arrUpdate;
+                      });
+                    }}
+                  >
+                    {arr4.map((item: any) => {
+                      return (
+                        <FormControlLabel
+                          key={item}
+                          label={item}
+                          value={item}
+                          control={<Radio />}
+                        ></FormControlLabel>
+                      );
+                    })}
+                  </RadioGroup>
+                </FormControl>
+              );
             case "5":
               return <>qasdas5</>;
           }

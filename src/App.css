@@ -10,3 +10,9 @@
 .s {
   padding-top: 20px;
 }
+.center {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
