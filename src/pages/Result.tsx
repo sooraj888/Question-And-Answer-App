@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { Box, width } from "@mui/system";
-import React, { useRef, useState } from "react";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import PieChart from "../components/PieChart";
 import questionData from "./../quesionData.json";
