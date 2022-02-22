@@ -10,15 +10,13 @@ const Result = () => {
   const navigate = useNavigate();
   let isAnswerdRight = false;
 
-  const rightAnswers = questionData.reduce((prev, question) => {
-    return (question.id == 3 &&
-      JSON.stringify(question.answer) ==
-        JSON.stringify(localData[question.id - 1])) ||
-      JSON.stringify(["3.142", "22/7"]) ==
-        JSON.stringify(localData[question.id - 1])
+  const rightAnswers = questionData.reduce((prev: any, question: any) => {
+    return question.id == 3 &&
+      JSON.stringify(question.answer.sort()) ==
+        JSON.stringify(localData[question.id - 1].sort())
       ? prev + 1
       : JSON.stringify(question.answer) ===
-        JSON.stringify(localData[question.id - 1][0])
+        JSON.stringify(localData[question.id - 1])
       ? prev + 1
       : prev;
   }, 0);
@@ -33,14 +31,12 @@ const Result = () => {
 
       {questionData.map((question: any) => {
         isAnswerdRight =
-          (question.id == 3 &&
-            JSON.stringify(question.answer) ===
-              JSON.stringify(localData[question.id - 1])) ||
-          JSON.stringify(["3.142", "22/7"]) ===
-            JSON.stringify(localData[question.id - 1])
+          question.id == 3 &&
+          JSON.stringify(question.answer.sort()) ===
+            JSON.stringify(localData[question.id - 1].sort())
             ? true
-            : JSON.stringify(question.answer) ===
-              JSON.stringify(localData[question.id - 1][0])
+            : JSON.stringify(question.answer) ==
+              JSON.stringify(localData[question.id - 1])
             ? true
             : false;
 

@@ -11,6 +11,7 @@ import {
 import { Box, flexbox } from "@mui/system";
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { idText } from "typescript";
 import QusetionIdicator from "../components/QusetionIdicator";
 import quesionData from "./../quesionData.json";
 
@@ -22,6 +23,7 @@ const Qusetion = () => {
     id = 1;
   }
   const [answersArray, setAnswersArray] = useState<any>(Array(5).fill([]));
+  const [arrAnswer5, setArrAnswer5] = useState<any>([]);
 
   const handleOnAnswerSubmission = (e: any) => {
     e.preventDefault();
@@ -29,8 +31,16 @@ const Qusetion = () => {
   };
 
   useEffect(() => {
-    console.log(answersArray);
-  }, [answersArray]);
+    console.log(answersArray, arrAnswer5);
+  }, [answersArray, arrAnswer5]);
+
+  useEffect(() => {
+    setAnswersArray((values: any) => {
+      const arr: any = [...values];
+      arr[4] = arrAnswer5;
+      return arr;
+    });
+  }, [arrAnswer5]);
 
   const handleOnCheckBox = (optionValue: any) => {
     setAnswersArray((value: any) => {
@@ -45,6 +55,16 @@ const Qusetion = () => {
       }
 
       return arr;
+    });
+  };
+
+  const handleMatchTheFollowing = (item: string) => {
+    console.log(item);
+    setArrAnswer5((prev: any) => {
+      console.log(item);
+      const updateArray = [...prev];
+      !updateArray.includes(item) && updateArray.push(item);
+      return updateArray;
     });
   };
 
@@ -85,7 +105,7 @@ const Qusetion = () => {
                   onChange={(e: any) =>
                     setAnswersArray((values: any) => {
                       const arr: any = [...values];
-                      arr[0] = [e.target.value];
+                      arr[0] = e.target.value;
                       return arr;
                     })
                   }
@@ -100,7 +120,7 @@ const Qusetion = () => {
                     onChange={(e: any) => {
                       setAnswersArray((value: any) => {
                         const arrUpdate: any = [...value];
-                        arrUpdate[1] = [e.target.value];
+                        arrUpdate[1] = e.target.value;
                         return arrUpdate;
                       });
                     }}
@@ -129,6 +149,7 @@ const Qusetion = () => {
                         control={<Checkbox />}
                         label={item}
                         onChange={() => handleOnCheckBox(item)}
+                        checked={answersArray[2].includes(item)}
                       />
                     );
                   })}
@@ -143,7 +164,7 @@ const Qusetion = () => {
                     onChange={(e: any) => {
                       setAnswersArray((value: any) => {
                         const arrUpdate: any = [...value];
-                        arrUpdate[3] = [e.target.value];
+                        arrUpdate[3] = e.target.value;
                         return arrUpdate;
                       });
                     }}
@@ -162,7 +183,36 @@ const Qusetion = () => {
                 </FormControl>
               );
             case "5":
-              return <>qasdas5</>;
+              let arr5: any = quesionData?.[4];
+
+              return (
+                <>
+                  <Button onClick={() => setArrAnswer5([])}>Retry </Button>
+
+                  {arr5.questionOption.map((item: any, id: number) => {
+                    console.log(item, arrAnswer5?.[id], arr5?.option?.[id]);
+
+                    return (
+                      <Box key={id} className="mathTheFollowing">
+                        <span>{item}</span>
+                        <span>{arrAnswer5?.[id]}</span>
+                        <span>
+                          <Button
+                            disabled={
+                              arrAnswer5.includes(arr5?.option?.[id]) && true
+                            }
+                            onClick={() => {
+                              handleMatchTheFollowing(arr5?.option?.[id]);
+                            }}
+                          >
+                            {arr5?.option?.[id]}
+                          </Button>
+                        </span>
+                      </Box>
+                    );
+                  })}
+                </>
+              );
           }
         })()}
       </div>

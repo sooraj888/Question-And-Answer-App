@@ -20,8 +20,9 @@
   },
   {
     "id": 5,
-    "question": "question 5",
-    "answer": "a",
-    "option": ""
+    "question": "Match the following",
+    "questionOption": ["2+4 =", "3-1 =", "8/2 =", "4*2 ="],
+    "answer": ["6", "2", "4", "8"],
+    "option": ["8", "6", "2", "4"]
   }
 ]
